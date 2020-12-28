@@ -9,7 +9,7 @@ export default class App extends React.Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text style={styles.logo}>HeyAPP</Text>
+        <Text style={styles.logo}>Mobil Proje</Text>
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
