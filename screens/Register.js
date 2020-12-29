@@ -1,10 +1,35 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-
+import { firebase } from '@firebase/app';
+require('firebase/auth')
 export default class App extends React.Component {
   state={
     email:"",
     password:""
+  }
+  componentDidMount=()=>{
+    var firebaseConfig = {
+      apiKey: "AIzaSyCKwjgAFFXrWKaXojwa26o04QrOA_iIeIc",
+      authDomain: "mobil-proje-9c3ff.firebaseapp.com",
+      projectId: "mobil-proje-9c3ff",
+      storageBucket: "mobil-proje-9c3ff.appspot.com",
+      messagingSenderId: "363007359849",
+      appId: "1:363007359849:web:c819e1f0fdefbd45189bf8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  firebase.auth().onAuthStateChanged(auth=>{
+    if (auth){
+      console.log("giris yapildi")
+    }
+    else{
+      console.log("giris yapilmadi")
+    }
+  })
+
+  } 
+  kayitOl=()=>{
+    firebase.auth.signUpWithEmailAndPassword(this.state.email,this.state.password)
   }
   render(){
     return (

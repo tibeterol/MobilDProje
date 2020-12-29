@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import * as FirebaseCore from 'firebase';
+//import * as FirebaseCore from 'firebase';
 import { firebase } from '@firebase/app';
 require('firebase/auth')
 
