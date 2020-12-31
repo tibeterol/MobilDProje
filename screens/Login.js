@@ -38,7 +38,7 @@ export default class App extends React.Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text style={styles.logo}>Mobil Proje</Text>
+        <Text style={styles.logo}>Mobil Proje DOVIZ</Text>
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
