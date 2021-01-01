@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
   } 
   kayitOl=()=>{
-    firebase.auth.signUpWithEmailAndPassword(this.state.email,this.state.password)
+    firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)
   }
   render(){
     return (
