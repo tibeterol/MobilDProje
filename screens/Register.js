@@ -1,41 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { firebase } from '@firebase/app';
-require('firebase/auth')
+import firebase from '../Firebase';
 export default class App extends React.Component {
   state={
     email:"",
     password:""
   }
-  componentDidMount=()=>{
-    var firebaseConfig = {
-      apiKey: "AIzaSyCKwjgAFFXrWKaXojwa26o04QrOA_iIeIc",
-      authDomain: "mobil-proje-9c3ff.firebaseapp.com",
-      projectId: "mobil-proje-9c3ff",
-      storageBucket: "mobil-proje-9c3ff.appspot.com",
-      messagingSenderId: "363007359849",
-      appId: "1:363007359849:web:c819e1f0fdefbd45189bf8"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  firebase.auth().onAuthStateChanged(auth=>{
-    if (auth){
-      console.log("giris yapildi")
+ 
+  kayitOl = (email, password) => {
+    try {
+      firebase
+         .auth()
+         .createUserWithEmailAndPassword(email, password)
+         .then(()=>showMessage({
+          message: "Başarılı",
+          description: "Kayıt Yapılıyor.",
+          type: "success",
+        })
+         ).catch(error=>{
+          
+         });
+} catch (error) {
+      //console.log(error.toString(error));
+      
     }
-    else{
-      console.log("giris yapilmadi")
-    }
-  })
-
-  } 
-  kayitOl=()=>{
-    firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)
-  }
-  render(){
-    return (
-      <View style={styles.container}>
-        <Text style={styles.logo}>Mobil Proje DOVIZ</Text>
-        <View style={styles.inputView} >
+  };
+/*
+ <View style={styles.inputView} >             buralar sonra degerlendirilecek
           <TextInput  
             style={styles.inputText}
             placeholder="Ad..." 
@@ -49,6 +40,13 @@ export default class App extends React.Component {
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({soyad:text})}/>
         </View>
+
+*/
+
+  render(){
+    return (
+      <View style={styles.container}>
+        <Text style={styles.logo}>Mobil Proje </Text>
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
@@ -64,8 +62,8 @@ export default class App extends React.Component {
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({password:text})}/>
         </View>
-        <TouchableOpacity style={styles.sgnBtn}>
-          <Text style={styles.loginText}>Sign Up</Text>
+        <TouchableOpacity style={styles.sgnBtn}  onPress={()=>this.kayitOl(this.state.email,this.state.password)}>
+          <Text style={styles.registerText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     );
@@ -108,7 +106,7 @@ const styles = StyleSheet.create({
     marginTop:40,
     marginBottom:10
   },
-  loginText:{
+  registerText:{
     color:"white"
   }
 });

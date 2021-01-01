@@ -1,44 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { firebase } from '@firebase/app';
-require('firebase/auth')
+import firebase from '../Firebase';
 
 export default class App extends React.Component {
   state={
     email:"",
-    password:"",
-    login: false
+    password:""
   }
-  componentDidMount=()=>{
-    var firebaseConfig = {
-      apiKey: "AIzaSyCKwjgAFFXrWKaXojwa26o04QrOA_iIeIc",
-      authDomain: "mobil-proje-9c3ff.firebaseapp.com",
-      projectId: "mobil-proje-9c3ff",
-      storageBucket: "mobil-proje-9c3ff.appspot.com",
-      messagingSenderId: "363007359849",
-      appId: "1:363007359849:web:c819e1f0fdefbd45189bf8"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  firebase.auth().onAuthStateChanged(auth=>{
-    if (auth){
-      console.log("giris yapildi")
-    }
-    else{
-      console.log("giris yapilmadi")
-    }
-  })
 
-  } 
-  
-  girisYap=()=>{
-    firebase.auth.signInWithEmailAndPassword(this.state.email,this.state.password)
-  }
+  girisYap= (email, password) => {
+    try {
+      firebase
+         .auth()
+         .signInWithEmailAndPassword(email, password)
+         .then(()=>showMessage({
+          message: "Başarılı",
+          description: "Giriş Yapılıyor.",
+          type: "success",
+        })
+         ).catch(error=>{
+           
+         });
+} catch (error) {
+      //console.log(error.toString(error));
+      
+    }
+  };
 
   render(){
     return (
       <View style={styles.container}>
-        <Text style={styles.logo}>Mobil Proje DOVIZ</Text>
+        <Text style={styles.logo}>Mobil Proje </Text>
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
@@ -54,7 +46,7 @@ export default class App extends React.Component {
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({password:text})}/>
         </View>
-        <TouchableOpacity style={styles.loginBtn} onPress={()=>this.girisYap()}>
+        <TouchableOpacity style={styles.loginBtn} onPress={()=>this.girisYap(this.state.email,this.state.password)}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity>
