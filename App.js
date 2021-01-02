@@ -6,6 +6,7 @@ import Register from'./screens/Register'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Ana from'./screens/Ana'
+//stack navigation
 const AppNavigator = createStackNavigator({
 
   Register: {
@@ -36,10 +37,4 @@ const AppNavigator = createStackNavigator({
 });
 
 export default createAppContainer(AppNavigator);
-/*export default function App() {
-  return (
-  // <Login />
-    <Register/>
-  );
-}
-*/
+ 

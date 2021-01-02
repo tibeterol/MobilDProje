@@ -1,4 +1,5 @@
 import React from 'react';
+//loginden ana ekrana geçişte sorun var
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import firebase from '../Firebase';
 
@@ -12,22 +13,12 @@ export default class App extends React.Component {
     try {
       firebase
          .auth()
-         .signInWithEmailAndPassword(email, password)
-         .then(data=>{
-          showMessage({
-          message: "Başarılı",
-          description: "Giriş Yapılıyor.",
-          type: "success",
-        }),
-
-        this.props.navigation.navigate('Ana',data.user.uid)
+         .signInWithEmailAndPassword(email, sifre)
+         .then(data=>{alert("Giris Basarili"),     
+        this.props.navigation.navigate('Ana')  
       }
          ).catch(error=>{
-         /* showMessage({
-            message: "Uyarı",
-            description: "Girdiğiniz Bİlgiler Hatalı.",
-            type: "info",
-          });*/
+           alert("Hatali giris")
          });
 
 }catch (error) {
@@ -39,7 +30,7 @@ export default class App extends React.Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text style={styles.logo}>Mobil Proje </Text>
+        <Text style={styles.logo}>AtBiZar</Text>
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
