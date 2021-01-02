@@ -12,14 +12,34 @@ export default class App extends React.Component {
       firebase
          .auth()
          .createUserWithEmailAndPassword(email, password)
-         .then(()=>showMessage({
+         .then(data => {
+           ()=>showMessage({
           message: "Başarılı",
           description: "Kayıt Yapılıyor.",
           type: "success",
-        })
+        }),
+
+        firebase
+  .firestore()
+  .collection("Users")
+  .doc(data.user.uid)
+  .set({
+    //name: this.state.name,
+  })
+  .then((ref) => {  });
+        this.props.navigation.navigate('Ana',data.user.uid)
+        
+      }
          ).catch(error=>{
-          
+          /*showMessage({
+            message: "Uyarı",
+            description: "Girdiğiniz Bilgiler Hatalı.",
+            type: "info",
+          });*/
          });
+
+
+        
 } catch (error) {
       //console.log(error.toString(error));
       

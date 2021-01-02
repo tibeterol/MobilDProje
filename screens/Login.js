@@ -13,15 +13,24 @@ export default class App extends React.Component {
       firebase
          .auth()
          .signInWithEmailAndPassword(email, password)
-         .then(()=>showMessage({
+         .then(data=>{
+          showMessage({
           message: "Başarılı",
           description: "Giriş Yapılıyor.",
           type: "success",
-        })
+        }),
+
+        this.props.navigation.navigate('Ana',data.user.uid)
+      }
          ).catch(error=>{
-           
+         /* showMessage({
+            message: "Uyarı",
+            description: "Girdiğiniz Bİlgiler Hatalı.",
+            type: "info",
+          });*/
          });
-} catch (error) {
+
+}catch (error) {
       //console.log(error.toString(error));
       
     }
@@ -50,7 +59,7 @@ export default class App extends React.Component {
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Text style={styles.loginText}>Signup</Text>
+          <Text style={styles.loginText} onPress={() => this.props.navigation.navigate('Register')}>Signup</Text>
         </TouchableOpacity>
 
   
