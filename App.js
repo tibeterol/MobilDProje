@@ -6,7 +6,9 @@ import Register from'./screens/Register'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Ana from'./screens/Ana'
+import TabNavigation from './screens/TabNavigation'
 //stack navigation
+ 
 const AppNavigator = createStackNavigator({
 
   Register: {
@@ -16,6 +18,13 @@ const AppNavigator = createStackNavigator({
     },
   },
 
+  TabNavigation: {
+    screen: TabNavigation,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+ 
   Login: {
     navigationOptions: {
       headerShown: false,
@@ -31,10 +40,13 @@ const AppNavigator = createStackNavigator({
     },
 },
 
-   
 {
-  initialRouteName: 'Login',
+  initialRouteName: 'TabNavigation',
 });
 
+ 
+
 export default createAppContainer(AppNavigator);
+ 
+
  

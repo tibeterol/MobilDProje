@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
 import { Dice } from '../components/Dice'
 
-export default function App() {
+export default function Ana() {
   const randomFace = () => 1 + Math.round(Math.random() * 5); // random number in [1-6]
   const [face, setFace] = useState(randomFace()); // start with a random face
   const rollDice = () => setFace(randomFace());  // roll to a random face

@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import firebase from '../Firebase';
 
-export default class App extends React.Component {
+export default class Login extends React.Component {
   state={
     email:"",
     password:""
