@@ -27,7 +27,11 @@ export default class Register extends React.Component {
     //name: this.state.name,
   })
   .then((ref) => {  });
-        this.props.navigation.navigate('Ana',data.user.uid)
+        this.props.navigation.navigate('TabNavigation',data.user.uid)
+    //const randomtut  = () => 1 + Math.round(Math.random() * 2)
+   //  if(randomtut%2==0)
+   //  else
+    //     this.props.navigation.navigate('DrawNavigation',data.user.uid)
         
       }
          ).catch(error=>{
@@ -99,7 +103,7 @@ const styles = StyleSheet.create({
   },
   logo:{
     fontWeight:"bold",
-    fontSize:50,
+    fontSize:60,
     color:"#fb5b5a",
     marginBottom:40
   },

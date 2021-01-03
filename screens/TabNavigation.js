@@ -12,12 +12,11 @@ function ZarEkrani() {
 
 function HakkindaEkrani() {
   return (
-    <Hakkinda/>
+   <Hakkinda/>
   );
 }
 
 const Tab = createBottomTabNavigator();
-
 export default function App() {
   return (
     <NavigationContainer>

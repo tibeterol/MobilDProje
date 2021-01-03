@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,Button } from 'react-native';
 import Login from './screens/Login'
 import Register from'./screens/Register'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Ana from'./screens/Ana'
 import TabNavigation from './screens/TabNavigation'
+import DrawNavigation from './screens/DrawNavigation'
+import Giris from './screens/Giris'
+import Bilgi from './screens/Bilgi'
 //stack navigation
  
 const AppNavigator = createStackNavigator({
@@ -17,6 +20,18 @@ const AppNavigator = createStackNavigator({
       headerShown: false,
     },
   },
+  Giris: {
+    screen: Giris,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+    Bilgi: {
+      screen: Bilgi,
+        navigationOptions: {
+          headerShown: false,
+        },
+      },
 
   TabNavigation: {
     screen: TabNavigation,
@@ -24,6 +39,13 @@ const AppNavigator = createStackNavigator({
         headerShown: false,
       },
     },
+    DrawNavigation: {
+      screen: DrawNavigation,
+        navigationOptions: {
+          headerShown: false,
+        },
+      },
+ 
  
   Login: {
     navigationOptions: {
@@ -31,6 +53,7 @@ const AppNavigator = createStackNavigator({
     },
   screen: Login,
   },
+   
 
   Ana: {
     screen: Ana,
@@ -41,8 +64,9 @@ const AppNavigator = createStackNavigator({
 },
 
 {
-  initialRouteName: 'TabNavigation',
-});
+  initialRouteName: 'Login',
+}
+);
 
  
 

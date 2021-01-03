@@ -1,5 +1,4 @@
 import React from 'react';
-//loginden ana ekrana geçişte sorun var
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import firebase from '../Firebase';
 
@@ -9,13 +8,13 @@ export default class Login extends React.Component {
     password:""
   }
 
-  girisYap= (email, password) => {
+  GirisYap= (email, password) => {
     try {
       firebase
          .auth()
          .signInWithEmailAndPassword(email, sifre)
          .then(data=>{alert("Giris Basarili"),     
-        this.props.navigation.navigate('Ana')  
+        this.props.navigation.navigate('TabNavigation')  
       }
          ).catch(error=>{
            alert("Hatali giris")
@@ -46,7 +45,7 @@ export default class Login extends React.Component {
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({password:text})}/>
         </View>
-        <TouchableOpacity style={styles.loginBtn} onPress={()=>this.girisYap(this.state.email,this.state.password)}>
+        <TouchableOpacity style={styles.loginBtn} onPress={()=>this.GirisYap(this.state.email, this.state.password)}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -62,13 +61,13 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#003f5c',
+    backgroundColor: 'darkgreen', //#003f5c
     alignItems: 'center',
     justifyContent: 'center',
   },
   logo:{
     fontWeight:"bold",
-    fontSize:50,
+    fontSize:60,
     color:"#fb5b5a",
     marginBottom:40
   },
