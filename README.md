@@ -1,3 +1,3 @@
 # MobilDProje
 Mobil Uygulama Geliştirme Dersi Proje Ödevi-
-Zar Atma Oyunu
+Zar Atma Oyunu / AtBiZar
